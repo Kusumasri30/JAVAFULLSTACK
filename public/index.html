@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2e9">
+  <title>Ridgeline — Keep your wheels up</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="layout">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Ridgeline home"><span class="brand-mark">R</span>RIDGELINE<span class="brand-dot">.</span></a>
+      <div class="season-tag"><span></span> FIELD NOTES / 001</div>
+      <button class="icon-button sound-toggle" id="sound-toggle" type="button" aria-label="Toggle sound" title="Toggle sound">♫</button>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="eyebrow">A LITTLE DIRT NEVER HURT</p>
+        <h1>Keep your <span>wheels up.</span></h1>
+      </div>
+      <p class="intro-note">One hill at a time.<br>How far can you ride?</p>
+    </section>
+
+    <section class="play-area" aria-label="Hill climbing game">
+      <div class="game-column">
+        <div class="game-frame">
+          <div class="hud" aria-live="polite">
+            <div class="stat"><span class="stat-label">DISTANCE</span><span><strong id="distance">000</strong><small> m</small></span></div>
+            <div class="stat fuel-stat"><span class="stat-label">FUEL</span><div class="fuel-track"><div id="fuel-fill"></div></div></div>
+            <div class="stat coin-stat"><span class="coin-icon">●</span><strong id="coins">0</strong></div>
+          </div>
+          <canvas id="game" aria-label="Your car rides across a hilly landscape"></canvas>
+          <div class="start-overlay" id="start-overlay">
+            <p class="overlay-kicker">THE TRAIL IS YOURS</p>
+            <h2>Find your<br>own rhythm.</h2>
+            <button class="primary-button" id="start-button" type="button">Start expedition <span>↗</span></button>
+            <p class="overlay-small">A / D to balance · Space to drive</p>
+          </div>
+          <div class="end-overlay hidden" id="end-overlay">
+            <p class="overlay-kicker">BACK AT BASE</p>
+            <h2 id="end-title">Nice run.</h2>
+            <p class="end-summary" id="end-summary"></p>
+            <form id="score-form" class="score-form">
+              <label for="rider-name">ADD YOUR NAME TO THE TRAIL</label>
+              <div class="name-row"><input id="rider-name" name="name" maxlength="14" placeholder="Rider" autocomplete="nickname"><button class="primary-button" type="submit">Save <span>↗</span></button></div>
+            </form>
+            <button class="replay-button" id="replay-button" type="button">Ride again <span>↻</span></button>
+          </div>
+          <div class="toast" id="toast" role="status"></div>
+        </div>
+        <div class="game-footer">
+          <span><i class="live-dot"></i><span id="game-state">READY WHEN YOU ARE</span></span>
+          <span class="seed-label">TRAIL <b id="trail-seed">0001</b></span>
+        </div>
+        <div class="controls" aria-label="Game controls">
+          <div class="control-group"><span class="control-key">A</span><span class="control-key">D</span><span>Balance</span></div>
+          <div class="control-group"><span class="control-key wide">SPACE</span><span>Throttle</span></div>
+          <div class="control-group"><span class="control-key">↓</span><span>Brake</span></div>
+          <div class="mobile-controls">
+            <button type="button" data-control="lean-left" aria-label="Lean back">↶</button>
+            <button type="button" data-control="brake" aria-label="Brake">↓</button>
+            <button type="button" data-control="throttle" aria-label="Accelerate">↑</button>
+            <button type="button" data-control="lean-right" aria-label="Lean forward">↷</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <section class="board-section">
+          <div class="section-heading"><div><p class="eyebrow">LOCAL LEGENDS</p><h2>Trail board</h2></div><span class="board-badge">TOP 08</span></div>
+          <ol class="leaderboard" id="leaderboard"><li class="empty-board">No rides yet. Make the first one.</li></ol>
+        </section>
+        <section class="field-card">
+          <div class="field-icon" aria-hidden="true">↗</div>
+          <p class="eyebrow">FIELD GUIDE / 01</p>
+          <h3>Easy on the gas.<br>Easy on the landing.</h3>
+          <p>Collect fuel cans to keep moving. A little balance goes a long way on the steep bits.</p>
+        </section>
+        <div class="sidebar-foot"><span>BUILT FOR THE LONG WAY ROUND</span><span>© 2026 RIDGELINE</span></div>
+      </aside>
+    </section>
+  </main>
+  <script src="/game.js" defer></script>
+</body>
+</html>
